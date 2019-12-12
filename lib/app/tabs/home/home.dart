@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Widget card({
   @required double width,
@@ -204,9 +205,14 @@ class Home extends StatelessWidget {
                 right: 20.0,
               ),
               child: TextField(
+                keyboardType: TextInputType.text,
+                autocorrect: true,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey[300], width: 1.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: theme.primaryColor, width: 1.0),
                   ),
                   prefixIcon: Icon(
                     Icons.search,
