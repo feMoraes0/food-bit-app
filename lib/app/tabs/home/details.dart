@@ -14,13 +14,16 @@ class _DetailsState extends State<Details> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          Container(
-            alignment: Alignment.topCenter,
-            width: size.width,
-            height: size.width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('images/plate-001.png'),
+          Hero(
+            tag: 'detail_food0',
+            child: Container(
+              alignment: Alignment.topCenter,
+              width: size.width,
+              height: size.width,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/plate-001.png'),
+                ),
               ),
             ),
           ),
@@ -108,9 +111,8 @@ class _DetailsState extends State<Details> {
                   width: size.width - 100.0,
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0)
-                  ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20.0)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
@@ -139,37 +141,65 @@ class _DetailsState extends State<Details> {
                         ],
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: 15.0,),
+                        margin: const EdgeInsets.only(
+                          top: 15.0,
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Text('Grilled salmon', style: TextStyle(fontSize: 18.0),),
-                            Text('\$ 96.00', style: TextStyle(fontSize: 18.0),),
+                            Text(
+                              'Grilled salmon',
+                              style: TextStyle(fontSize: 18.0),
+                            ),
+                            Text(
+                              '\$ 96.00',
+                              style: TextStyle(fontSize: 18.0),
+                            ),
                           ],
                         ),
                       ),
                       Row(
                         children: <Widget>[
-                          Text('by', style: TextStyle(color: Colors.grey[500],),),
+                          Text(
+                            'by',
+                            style: TextStyle(
+                              color: Colors.grey[500],
+                            ),
+                          ),
                           Text(' Restaurant'),
                         ],
                       ),
                       Container(
-                        margin: const EdgeInsets.symmetric(vertical: 15.0,),
+                        margin: const EdgeInsets.symmetric(
+                          vertical: 15.0,
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(Icons.remove, size: 30.0,),
+                            Icon(
+                              Icons.remove,
+                              size: 30.0,
+                            ),
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 8.0),
-                              margin: const EdgeInsets.symmetric(horizontal: 20.0,),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 25.0, vertical: 8.0),
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 20.0,
+                              ),
                               decoration: BoxDecoration(
                                 color: theme.primaryColor,
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
-                              child: Text('Add To Bad', style: TextStyle(fontSize: 18.0, color: Colors.white,),),
+                              child: Text(
+                                'Add To Bad',
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
-                            Icon(Icons.add, size: 30.0, color: theme.primaryColor),
+                            Icon(Icons.add,
+                                size: 30.0, color: theme.primaryColor),
                           ],
                         ),
                       ),

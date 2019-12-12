@@ -296,14 +296,17 @@ class Home extends StatelessWidget {
                     onTap: () {
                       Navigator.pushNamed(context, 'details');
                     },
-                    child: card(
-                      width: size.width / 2 - 30.0,
-                      primaryColor: theme.primaryColor,
-                      productName: product['name'],
-                      productPrice: product['price'],
-                      productUrl: product['image'],
-                      productClients: product['clients'],
-                      productRate: product['rate'],
+                    child: Hero(
+                      tag: 'detail_food$index',
+                      child: card(
+                        width: size.width / 2 - 30.0,
+                        primaryColor: theme.primaryColor,
+                        productName: product['name'],
+                        productPrice: product['price'],
+                        productUrl: product['image'],
+                        productClients: product['clients'],
+                        productRate: product['rate'],
+                      ),
                     ),
                   );
                 },
