@@ -294,7 +294,7 @@ class Home extends StatelessWidget {
                   Map<String, String> product = this.popularFood[index];
                   return GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, 'details');
+                      Navigator.pushNamed(context, 'details', arguments: {'product': product, 'index': index});
                     },
                     child: Hero(
                       tag: 'detail_food$index',

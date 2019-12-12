@@ -5,7 +5,7 @@ class Details extends StatefulWidget {
   _DetailsState createState() => _DetailsState();
 }
 
-class _DetailsState extends State<Details> {
+class _DetailsState extends State<Details> with TickerProviderStateMixin {
   int screenTab = 0;
 
   void initState() {
@@ -16,19 +16,22 @@ class _DetailsState extends State<Details> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     ThemeData theme = Theme.of(context);
+    final Map screenArguments = ModalRoute.of(context).settings.arguments;
+    Map product = screenArguments['product'];
+    int index = screenArguments['index'];
 
     return Scaffold(
       body: Stack(
         children: <Widget>[
           Hero(
-            tag: 'detail_food0',
+            tag: 'detail_food$index',
             child: Container(
               alignment: Alignment.topCenter,
               width: size.width,
               height: size.width,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('images/plate-001.png'),
+                  image: AssetImage(product['image']),
                 ),
               ),
             ),
@@ -83,208 +86,211 @@ class _DetailsState extends State<Details> {
               ),
             ),
           ),
-          SingleChildScrollView(
-            child: Container(
-              width: size.width - 100.0,
-              margin: EdgeInsets.only(
-                left: 50.0,
-                right: 50.0,
-                top: size.width * 0.70,
-              ),
-              // color: Colors.red,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(4.0),
-                    margin: const EdgeInsets.only(right: 12.0, bottom: 10.0),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 4.0,
-                          offset: Offset(3.0, 3.0),
-                        )
-                      ],
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
-                    child: Icon(
-                      Icons.favorite,
-                      size: 20.0,
-                      color: theme.primaryColor,
-                    ),
+          Container(
+            width: size.width - 100.0,
+            margin: EdgeInsets.only(
+              left: 50.0,
+              right: 50.0,
+              top: size.width * 0.70,
+            ),
+            // color: Colors.red,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.all(4.0),
+                  margin: const EdgeInsets.only(right: 12.0, bottom: 10.0),
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 4.0,
+                        offset: Offset(3.0, 3.0),
+                      )
+                    ],
+                    shape: BoxShape.circle,
+                    color: Colors.white,
                   ),
-                  Container(
-                    width: size.width - 100.0,
-                    padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              padding: const EdgeInsets.all(4.0),
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black12,
-                                    blurRadius: 4.0,
-                                    offset: Offset(3.0, 3.0),
-                                  )
-                                ],
-                                shape: BoxShape.circle,
-                                color: Colors.white,
-                              ),
-                              child: Icon(
-                                Icons.near_me,
-                                size: 20.0,
-                                color: theme.primaryColor,
-                              ),
+                  child: Icon(
+                    Icons.favorite,
+                    size: 20.0,
+                    color: theme.primaryColor,
+                  ),
+                ),
+                Container(
+                  width: size.width - 100.0,
+                  padding: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            padding: const EdgeInsets.all(4.0),
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 4.0,
+                                  offset: Offset(3.0, 3.0),
+                                )
+                              ],
+                              shape: BoxShape.circle,
+                              color: Colors.white,
                             ),
-                          ],
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(
-                            top: 15.0,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(
-                                'Grilled salmon',
-                                style: TextStyle(fontSize: 18.0),
-                              ),
-                              Text(
-                                '\$ 96.00',
-                                style: TextStyle(fontSize: 18.0),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Text(
-                              'by',
-                              style: TextStyle(
-                                color: Colors.grey[500],
-                              ),
+                            child: Icon(
+                              Icons.near_me,
+                              size: 20.0,
+                              color: theme.primaryColor,
                             ),
-                            Text(' Restaurant'),
-                          ],
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(
-                            vertical: 15.0,
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                Icons.remove,
-                                size: 30.0,
-                              ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 25.0,
-                                  vertical: 8.0,
-                                ),
-                                margin: const EdgeInsets.symmetric(
-                                  horizontal: 20.0,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: theme.primaryColor,
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ),
-                                child: Text(
-                                  'Add To Bad',
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              Icon(
-                                Icons.add,
-                                size: 30.0,
-                                color: theme.primaryColor,
-                              ),
-                            ],
-                          ),
+                        ],
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(
+                          top: 15.0,
                         ),
-                        Row(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  this.screenTab = 0;
-                                });
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.only(
-                                  bottom: 3.0,
+                            Text(
+                              product['name'],
+                              style: TextStyle(fontSize: 18.0),
+                            ),
+                            Text(
+                              '\$ ${product['price']}',
+                              style: TextStyle(fontSize: 18.0),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            'by',
+                            style: TextStyle(
+                              color: Colors.grey[500],
+                            ),
+                          ),
+                          Text(' Restaurant'),
+                        ],
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                          vertical: 15.0,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(
+                              Icons.remove,
+                              size: 30.0,
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 25.0,
+                                vertical: 8.0,
+                              ),
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 20.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: theme.primaryColor,
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              child: Text(
+                                'Add To Bad',
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  color: Colors.white,
                                 ),
-                                decoration: BoxDecoration(
-                                    border: Border(
+                              ),
+                            ),
+                            Icon(
+                              Icons.add,
+                              size: 30.0,
+                              color: theme.primaryColor,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                this.screenTab = 0;
+                              });
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.only(
+                                bottom: 3.0,
+                              ),
+                              decoration: BoxDecoration(
+                                  border: Border(
+                                bottom: BorderSide(
+                                  color: (screenTab == 0)
+                                      ? theme.primaryColor
+                                      : Colors.transparent,
+                                  width: 2.0,
+                                ),
+                              )),
+                              child: Text(
+                                'Detailes'.toUpperCase(),
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  color: theme.primaryColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                this.screenTab = 1;
+                              });
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.only(
+                                bottom: 3.0,
+                                right: 10.0,
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border(
                                   bottom: BorderSide(
-                                    color: (screenTab == 0)
+                                    color: (screenTab == 1)
                                         ? theme.primaryColor
                                         : Colors.transparent,
                                     width: 2.0,
                                   ),
-                                )),
-                                child: Text(
-                                  'Detailes'.toUpperCase(),
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: theme.primaryColor,
-                                  ),
+                                ),
+                              ),
+                              child: Text(
+                                'Review',
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  color: theme.primaryColor,
                                 ),
                               ),
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  this.screenTab = 1;
-                                });
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.only(
-                                  bottom: 3.0,
-                                  right: 10.0,
-                                ),
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: (screenTab == 1)
-                                          ? theme.primaryColor
-                                          : Colors.transparent,
-                                      width: 2.0,
-                                    ),
-                                  ),
-                                ),
-                                child: Text(
-                                  'Review',
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: theme.primaryColor,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                          padding:
+                              const EdgeInsets.fromLTRB(5.0, 8.0, 5.0, 5.0),
+                          child: Text(
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut enim leo. In sagittis velit nibh. Morbi sollicitudin lorem vitae nisi iaculis, sit amet suscipit orci mollis. Ut dictum lectus eget diam vestibulum, at eleifend felis mattis. Sed molestie congue magna at venenatis. In mollis felis ut consectetur consequat.'))
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
