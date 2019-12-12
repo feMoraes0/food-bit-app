@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_bit_app/app/app.dart';
+import 'package:food_bit_app/app/tabs/home/details.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,6 +13,9 @@ class MyApp extends StatelessWidget {
         fontFamily: "Cera Pro",
         primaryColor: Color(0xFFE85852),
       ),
+      routes: {
+        'details': (context) => Details(),
+      },
       home: App(),
     );
   }

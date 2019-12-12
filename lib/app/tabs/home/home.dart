@@ -292,14 +292,19 @@ class Home extends StatelessWidget {
                 itemCount: this.popularFood.length,
                 itemBuilder: (context, index) {
                   Map<String, String> product = this.popularFood[index];
-                  return card(
-                    width: size.width / 2 - 30.0,
-                    primaryColor: theme.primaryColor,
-                    productName: product['name'],
-                    productPrice: product['price'],
-                    productUrl: product['image'],
-                    productClients: product['clients'],
-                    productRate: product['rate'],
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'details');
+                    },
+                    child: card(
+                      width: size.width / 2 - 30.0,
+                      primaryColor: theme.primaryColor,
+                      productName: product['name'],
+                      productPrice: product['price'],
+                      productUrl: product['image'],
+                      productClients: product['clients'],
+                      productRate: product['rate'],
+                    ),
                   );
                 },
               ),
