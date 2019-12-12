@@ -1,114 +1,114 @@
 import 'package:flutter/material.dart';
 
+Widget card({double width, Color primaryColor}) {
+  return Container(
+    width: width,
+    color: Colors.white,
+    padding: const EdgeInsets.all(10.0),
+    margin: const EdgeInsets.symmetric(horizontal: 10.0),
+    child: Column(
+      children: <Widget>[
+        Stack(
+          children: <Widget>[
+            Container(
+              height: 140.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/plate-001.png'),
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.topRight,
+              child: Container(
+                padding: const EdgeInsets.all(4.0),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey[300],
+                      blurRadius: 4.0,
+                      offset: Offset(3.0, 3.0),
+                    )
+                  ],
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                ),
+                child: Icon(
+                  Icons.favorite,
+                  size: 17.0,
+                  color: primaryColor,
+                ),
+              ),
+            )
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            top: 10.0,
+            bottom: 4.0,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Tandoori Chicken',
+                style: TextStyle(
+                  fontSize: 14.0,
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(4.0),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey[300],
+                        blurRadius: 4.0,
+                        offset: Offset(3.0, 3.0),
+                      )
+                    ]),
+                child: Icon(
+                  Icons.near_me,
+                  size: 17.0,
+                  color: primaryColor,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 5.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                '4.9 \(200\)',
+                style: TextStyle(
+                  fontSize: 13.0,
+                  color: Colors.grey[400],
+                ),
+              ),
+              Text(
+                '\$ 96.00',
+                style: TextStyle(
+                  fontSize: 13.0,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     Size size = MediaQuery.of(context).size;
-
-    Widget card({double width, Color primaryColor}) {
-      return Container(
-        width: width,
-        color: Colors.white,
-        padding: const EdgeInsets.all(10.0),
-        margin: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: Column(
-          children: <Widget>[
-            Stack(
-              children: <Widget>[
-                Container(
-                  height: 140.0,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('images/plate-001.png'),
-                    ),
-                  ),
-                ),
-                Container(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    padding: const EdgeInsets.all(4.0),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey[300],
-                          blurRadius: 4.0,
-                          offset: Offset(3.0, 3.0),
-                        )
-                      ],
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
-                    child: Icon(
-                      Icons.favorite,
-                      size: 17.0,
-                      color: primaryColor,
-                    ),
-                  ),
-                )
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 10.0,
-                bottom: 4.0,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Tandoori Chicken',
-                    style: TextStyle(
-                      fontSize: 14.0,
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(4.0),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey[300],
-                            blurRadius: 4.0,
-                            offset: Offset(3.0, 3.0),
-                          )
-                        ]),
-                    child: Icon(
-                      Icons.near_me,
-                      size: 17.0,
-                      color: theme.primaryColor,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 5.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    '4.9 \(200\)',
-                    style: TextStyle(
-                      fontSize: 13.0,
-                      color: Colors.grey[400],
-                    ),
-                  ),
-                  Text(
-                    '\$ 96.00',
-                    style: TextStyle(
-                      fontSize: 13.0,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      );
-    }
 
     return SingleChildScrollView(
       child: SafeArea(
@@ -133,7 +133,8 @@ class Home extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 25.0, left: 20.0, right: 20.0),
+              padding:
+                  const EdgeInsets.only(top: 25.0, left: 20.0, right: 20.0),
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -230,17 +231,20 @@ class Home extends StatelessWidget {
                           height: 70,
                           margin: const EdgeInsets.only(bottom: 10.0),
                           decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5.0)),
-                              image: DecorationImage(
-                                  image: AssetImage('images/Icon-003.png')),
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 10.0,
-                                  color: Colors.grey[300],
-                                  offset: Offset(6.0, 6.0),
-                                )
-                              ]),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5.0),
+                            ),
+                            image: DecorationImage(
+                              image: AssetImage('images/Icon-003.png'),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 10.0,
+                                color: Colors.grey[300],
+                                offset: Offset(6.0, 6.0),
+                              )
+                            ],
+                          ),
                         ),
                         Text(
                           'Fastfood',
@@ -304,12 +308,114 @@ class Home extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, bottom: 10.0, top: 35.0),
+              padding: const EdgeInsets.only(
+                left: 20.0,
+                bottom: 10.0,
+                top: 35.0,
+              ),
               child: Text(
                 'Best food',
                 style: TextStyle(fontSize: 21.0),
               ),
             ),
+            Container(
+              width: size.width - 40,
+              color: Colors.white,
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Column(
+                children: <Widget>[
+                  Stack(
+                    children: <Widget>[
+                      Container(
+                        height: size.width - 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(5.0),
+                          ),
+                          image: DecorationImage(
+                            image: AssetImage('images/plate-005.jpg'),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.topRight,
+                        margin: const EdgeInsets.all(10.0),
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                          ),
+                          child: Icon(
+                            Icons.favorite,
+                            size: 25.0,
+                            color: theme.primaryColor,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 10.0,
+                      bottom: 4.0,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Tandoori Chicken',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(4.0),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey[300],
+                                  blurRadius: 4.0,
+                                  offset: Offset(3.0, 3.0),
+                                )
+                              ]),
+                          child: Icon(
+                            Icons.near_me,
+                            size: 22.0,
+                            color: theme.primaryColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          '5.0 \(150\)',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.grey[400],
+                          ),
+                        ),
+                        Text(
+                          '\$ 26.00',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
