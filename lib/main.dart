@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_bit_app/app/app.dart';
-import 'package:food_bit_app/app/tabs/home/details.dart';
+import 'package:food_bit_app/app/tabs/home/details/details.dart';
 
 void main() => runApp(MyApp());
 
