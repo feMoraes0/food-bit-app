@@ -1,5 +1,30 @@
 import 'package:flutter/material.dart';
 
+Widget iconBadge({
+  @required IconData icon,
+  @required Color iconColor
+}) {
+  return Container(
+    padding: const EdgeInsets.all(4.0),
+    decoration: BoxDecoration(
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black12,
+          blurRadius: 4.0,
+          offset: Offset(3.0, 3.0),
+        )
+      ],
+      shape: BoxShape.circle,
+      color: Colors.white,
+    ),
+    child: Icon(
+      icon,
+      size: 20.0,
+      color: iconColor,
+    ),
+  );
+}
+
 class Details extends StatefulWidget {
   @override
   _DetailsState createState() => _DetailsState();
@@ -7,6 +32,7 @@ class Details extends StatefulWidget {
 
 class _DetailsState extends State<Details> with TickerProviderStateMixin {
   int screenTab = 0;
+  int quantity = 0;
 
   void initState() {
     super.initState();
@@ -71,7 +97,7 @@ class _DetailsState extends State<Details> with TickerProviderStateMixin {
                           ),
                           child: Center(
                             child: Text(
-                              '0',
+                              '$quantity',
                               style: TextStyle(
                                 fontSize: 15.0,
                                 color: theme.primaryColor,
@@ -98,23 +124,10 @@ class _DetailsState extends State<Details> with TickerProviderStateMixin {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Container(
-                  padding: const EdgeInsets.all(4.0),
                   margin: const EdgeInsets.only(right: 12.0, bottom: 10.0),
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 4.0,
-                        offset: Offset(3.0, 3.0),
-                      )
-                    ],
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                  ),
-                  child: Icon(
-                    Icons.favorite,
-                    size: 20.0,
-                    color: theme.primaryColor,
+                  child: iconBadge(
+                    icon: Icons.favorite,
+                    iconColor: theme.primaryColor
                   ),
                 ),
                 Container(
@@ -130,24 +143,9 @@ class _DetailsState extends State<Details> with TickerProviderStateMixin {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          Container(
-                            padding: const EdgeInsets.all(4.0),
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                  blurRadius: 4.0,
-                                  offset: Offset(3.0, 3.0),
-                                )
-                              ],
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                            child: Icon(
-                              Icons.near_me,
-                              size: 20.0,
-                              color: theme.primaryColor,
-                            ),
+                          iconBadge(
+                            icon: Icons.near_me,
+                            iconColor: theme.primaryColor,
                           ),
                         ],
                       ),
@@ -187,9 +185,20 @@ class _DetailsState extends State<Details> with TickerProviderStateMixin {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(
-                              Icons.remove,
-                              size: 30.0,
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  if (quantity > 0) {
+                                    setState(() {
+                                      quantity--;
+                                    });
+                                  }
+                                });
+                              },
+                              child: Icon(
+                                Icons.remove,
+                                size: 30.0,
+                              ),
                             ),
                             Container(
                               padding: const EdgeInsets.symmetric(
@@ -211,10 +220,17 @@ class _DetailsState extends State<Details> with TickerProviderStateMixin {
                                 ),
                               ),
                             ),
-                            Icon(
-                              Icons.add,
-                              size: 30.0,
-                              color: theme.primaryColor,
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  this.quantity++;
+                                });
+                              },
+                              child: Icon(
+                                Icons.add,
+                                size: 30.0,
+                                color: theme.primaryColor,
+                              ),
                             ),
                           ],
                         ),
@@ -283,10 +299,10 @@ class _DetailsState extends State<Details> with TickerProviderStateMixin {
                         ],
                       ),
                       Container(
-                          padding:
-                              const EdgeInsets.fromLTRB(5.0, 8.0, 5.0, 5.0),
-                          child: Text(
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut enim leo. In sagittis velit nibh. Morbi sollicitudin lorem vitae nisi iaculis, sit amet suscipit orci mollis. Ut dictum lectus eget diam vestibulum, at eleifend felis mattis. Sed molestie congue magna at venenatis. In mollis felis ut consectetur consequat.'))
+                        padding: const EdgeInsets.fromLTRB(5.0, 8.0, 5.0, 5.0),
+                        child: Text(
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut enim leo. In sagittis velit nibh. Morbi sollicitudin lorem vitae nisi iaculis, sit amet suscipit orci mollis. Ut dictum lectus eget diam vestibulum, at eleifend felis mattis. Sed molestie congue magna at venenatis. In mollis felis ut consectetur consequat.'),
+                      ),
                     ],
                   ),
                 ),
