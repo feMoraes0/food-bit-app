@@ -137,7 +137,9 @@ Widget renderCardReview() {
             ),
             child: Text(
               'Cras ac nunc pretium, lacinia lorem ut, congue metus. Aenean vitae lectus at mauris eleifend placerat. Proin a nisl ut risus euismod ultrices et sed dui.',
-              style: TextStyle(fontSize: 13.0,),
+              style: TextStyle(
+                fontSize: 13.0,
+              ),
             ),
           )
         ],
@@ -184,6 +186,8 @@ class _BodyDetailsState extends State<BodyDetails>
 
   @override
   Widget build(BuildContext context) {
+    final Map screenArguments = ModalRoute.of(context).settings.arguments;
+    Map product = screenArguments['product'];
     ThemeData theme = Theme.of(context);
     Size size = MediaQuery.of(context).size;
 
@@ -251,15 +255,15 @@ class _BodyDetailsState extends State<BodyDetails>
           Container(
             alignment: Alignment.centerRight,
             margin: const EdgeInsets.only(right: 65.0, bottom: 10.0),
-            child:
-                iconBadge(icon: Icons.favorite, iconColor: theme.primaryColor),
+            child: iconBadge(
+              icon: Icons.favorite,
+              iconColor: theme.primaryColor,
+            ),
           ),
           Expanded(
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 50.0),
               padding: const EdgeInsets.only(
-                // horizontal: 15.0,
-                // vertical: 10.0,
                 top: 10.0,
               ),
               width: size.width - 100.0,
@@ -291,11 +295,11 @@ class _BodyDetailsState extends State<BodyDetails>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
-                            'Grilled Salmon',
+                            product['name'],
                             style: TextStyle(fontSize: 18.0),
                           ),
                           Text(
-                            '\$ 96.00',
+                            '\$ ${product['price']}',
                             style: TextStyle(fontSize: 18.0),
                           ),
                         ],
