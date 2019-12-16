@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class CustomHeader extends StatelessWidget {
   final int quantity;
   final String title;
+  final bool internalScreen;
 
   CustomHeader({
     @required this.quantity,
     @required this.title,
+    @required this.internalScreen,
   });
 
   @override
@@ -15,21 +17,23 @@ class CustomHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        GestureDetector(
+        (this.internalScreen) ? GestureDetector(
           onTap: () {
             Navigator.pop(context);
           },
           child: Container(
             margin: const EdgeInsets.only(left: 10.0),
-            child: Icon(Icons.arrow_back_ios, size: 32.0),
+            child: Icon(Icons.arrow_back_ios, size: 28.0),
           ),
+        ) : Container(
+          child: Icon(Icons.arrow_back_ios, size: 28.0, color: Colors.transparent,),
         ),
-        Text(title, style: TextStyle(fontSize: 24.0),),
+        Text(title, style: TextStyle(fontSize: 28.0),),
         Container(
           margin: const EdgeInsets.only(right: 10.0),
           child: Stack(
             children: <Widget>[
-              Icon(Icons.card_travel, size: 34.0),
+              Icon(Icons.card_travel, size: 32.0),
               Positioned(
                 bottom: 0,
                 right: 0,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_bit_app/app/components/custom_header.dart';
 
 class Cart extends StatefulWidget {
   @override
@@ -11,7 +12,11 @@ class _CartState extends State<Cart> {
     return SafeArea(
       child: Column(
         children: <Widget>[
-          
+          CustomHeader(
+            title: 'Cart',
+            quantity: 0,
+            internalScreen: false,
+          )
         ],
       ),
     );

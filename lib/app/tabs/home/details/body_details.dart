@@ -197,6 +197,7 @@ class _BodyDetailsState extends State<BodyDetails>
           CustomHeader(
             title: '',
             quantity: this.quantity,
+            internalScreen: true,
           ),
           Container(
             margin: EdgeInsets.only(
