@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_bit_app/app/tabs/account/account.dart';
 import 'package:food_bit_app/app/tabs/cart/cart.dart';
 import 'package:food_bit_app/app/tabs/home/home.dart';
+import 'package:food_bit_app/app/tabs/near_by/near_by.dart';
 
 class App extends StatelessWidget {
   @override
@@ -14,7 +15,7 @@ class App extends StatelessWidget {
         body: TabBarView(
           children: <Widget>[
             Home(),
-            Container(color: Colors.yellow),
+            NearBy(),
             Cart(),
             Account(),
           ],
