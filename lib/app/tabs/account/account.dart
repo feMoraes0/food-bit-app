@@ -55,20 +55,20 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
         children: <Widget>[
           Text(
             'Profile',
-            style: TextStyle(fontSize: 24.0),
+            style: TextStyle(fontSize: 18.0),
             textAlign: TextAlign.center,
           ),
           Container(
             margin: const EdgeInsets.only(
-              top: 20.0,
+              top: 30.0,
               bottom: 15.0,
             ),
             child: CircleAvatar(
               backgroundColor: Colors.blueGrey,
-              radius: 46.0,
+              radius: 35.0,
               child: Icon(
                 Icons.person,
-                size: 55.0,
+                size: 30.0,
                 color: Colors.white,
               ),
             ),
@@ -77,7 +77,7 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
             'Fernando Moraes',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 25.0,
+              fontSize: 22.0,
             ),
           ),
           Padding(
@@ -89,14 +89,14 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
                   padding: const EdgeInsets.symmetric(horizontal: 5.0),
                   child: Icon(
                     Icons.location_on,
-                    size: 20.0,
+                    size: 16.0,
                     color: Colors.black54,
                   ),
                 ),
                 Text(
                   'Warsaw, Poland',
                   style: TextStyle(
-                    fontSize: 16.0,
+                    fontSize: 14.0,
                     color: Colors.black54,
                   ),
                 ),

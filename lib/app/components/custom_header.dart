@@ -28,7 +28,7 @@ class CustomHeader extends StatelessWidget {
         ) : Container(
           child: Icon(Icons.arrow_back_ios, size: 28.0, color: Colors.transparent,),
         ),
-        Text(title, style: TextStyle(fontSize: 28.0),),
+        Text(title, style: TextStyle(fontSize: 18.0),),
         Container(
           margin: const EdgeInsets.only(right: 10.0),
           child: Stack(
