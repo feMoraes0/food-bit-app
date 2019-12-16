@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_bit_app/app/tabs/account/account.dart';
+import 'package:food_bit_app/app/tabs/cart/cart.dart';
 import 'package:food_bit_app/app/tabs/home/home.dart';
 
 class App extends StatelessWidget {
@@ -14,7 +15,7 @@ class App extends StatelessWidget {
           children: <Widget>[
             Home(),
             Container(color: Colors.yellow),
-            Container(color: Colors.purple),
+            Cart(),
             Account(),
           ],
         ),
