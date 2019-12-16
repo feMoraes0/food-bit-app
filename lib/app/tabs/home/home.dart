@@ -145,10 +145,14 @@ class Home extends StatelessWidget {
                             height: 70,
                             margin: const EdgeInsets.only(bottom: 10.0),
                             decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5.0),),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5.0),
+                              ),
                               image: DecorationImage(
-                                  image: AssetImage(option['image'],),),
+                                image: AssetImage(
+                                  option['image'],
+                                ),
+                              ),
                               boxShadow: [
                                 BoxShadow(
                                   blurRadius: 10.0,
@@ -184,8 +188,14 @@ class Home extends StatelessWidget {
                   Map<String, String> product = this.popularFood[index];
                   return GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, 'details',
-                          arguments: {'product': product, 'index': index});
+                      Navigator.pushNamed(
+                        context,
+                        'details',
+                        arguments: {
+                          'product': product,
+                          'index': index,
+                        },
+                      );
                     },
                     child: Hero(
                       tag: 'detail_food$index',
