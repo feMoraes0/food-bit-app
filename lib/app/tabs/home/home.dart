@@ -1,117 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-Widget card({
-  @required double width,
-  @required Color primaryColor,
-  @required String productUrl,
-  @required String productName,
-  @required String productPrice,
-  @required String productRate,
-  @required String productClients,
-}) {
-  return Container(
-    width: width,
-    color: Colors.white,
-    padding: const EdgeInsets.all(10.0),
-    margin: const EdgeInsets.symmetric(horizontal: 10.0),
-    child: Column(
-      children: <Widget>[
-        Stack(
-          children: <Widget>[
-            Container(
-              height: 140.0,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(productUrl),
-                ),
-              ),
-            ),
-            Container(
-              alignment: Alignment.topRight,
-              child: Container(
-                padding: const EdgeInsets.all(4.0),
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey[300],
-                      blurRadius: 4.0,
-                      offset: Offset(3.0, 3.0),
-                    )
-                  ],
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                ),
-                child: Icon(
-                  Icons.favorite,
-                  size: 17.0,
-                  color: primaryColor,
-                ),
-              ),
-            )
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.only(
-            top: 10.0,
-            bottom: 4.0,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                productName,
-                style: TextStyle(
-                  fontSize: 14.0,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(4.0),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey[300],
-                        blurRadius: 4.0,
-                        offset: Offset(3.0, 3.0),
-                      )
-                    ]),
-                child: Icon(
-                  Icons.near_me,
-                  size: 17.0,
-                  color: primaryColor,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 5.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                '$productRate \($productClients\)',
-                style: TextStyle(
-                  fontSize: 13.0,
-                  color: Colors.grey[400],
-                ),
-              ),
-              Text(
-                '\$ $productPrice',
-                style: TextStyle(
-                  fontSize: 13.0,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
+import 'package:food_bit_app/app/components/food_card.dart';
 
 class Home extends StatelessWidget {
   final List<Map<String, String>> popularFood = [
@@ -257,9 +146,9 @@ class Home extends StatelessWidget {
                             margin: const EdgeInsets.only(bottom: 10.0),
                             decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(5.0)),
+                                  BorderRadius.all(Radius.circular(5.0),),
                               image: DecorationImage(
-                                  image: AssetImage(option['image'])),
+                                  image: AssetImage(option['image'],),),
                               boxShadow: [
                                 BoxShadow(
                                   blurRadius: 10.0,
@@ -300,7 +189,7 @@ class Home extends StatelessWidget {
                     },
                     child: Hero(
                       tag: 'detail_food$index',
-                      child: card(
+                      child: FoodCard(
                         width: size.width / 2 - 30.0,
                         primaryColor: theme.primaryColor,
                         productName: product['name'],
