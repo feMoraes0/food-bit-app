@@ -8,6 +8,7 @@ class Account extends StatefulWidget {
 
 class _AccountState extends State<Account> with TickerProviderStateMixin {
   TabController _tabController;
+  bool switchValue = true;
   final List<Map<String, String>> favoriteFoods = [
     {
       'name': 'Tandoori Chicken',
@@ -194,20 +195,172 @@ class _AccountState extends State<Account> with TickerProviderStateMixin {
                     return Container(
                       margin: const EdgeInsets.only(top: 10.0),
                       child: FoodCard(
-                          width: size.width,
-                          primaryColor: theme.primaryColor,
-                          productName: product['name'],
-                          productPrice: product['price'],
-                          productUrl: product['image'],
-                          productClients: product['clients'],
-                          productRate: product['rate'],
-                        ),
+                        width: size.width,
+                        primaryColor: theme.primaryColor,
+                        productName: product['name'],
+                        productPrice: product['price'],
+                        productUrl: product['image'],
+                        productClients: product['clients'],
+                        productRate: product['rate'],
+                      ),
                     );
                   }).toList(),
                 ),
               ),
               Container(
-                color: Colors.red,
+                margin: const EdgeInsets.only(top: 10.0),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 15.0,
+                  horizontal: 20.0,
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15.0,
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                        color: Colors.grey[300],
+                      ))),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.location_on,
+                            size: 25.0,
+                            color: theme.primaryColor,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 15.0,
+                            ),
+                            child: Text(
+                              'Location',
+                              style: TextStyle(fontSize: 18.0),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10.0,
+                      ),
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                        color: Colors.grey[300],
+                      ))),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.local_shipping,
+                            size: 25.0,
+                            color: theme.primaryColor,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 15.0,
+                            ),
+                            child: Text(
+                              'Shipping',
+                              style: TextStyle(fontSize: 18.0),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10.0,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey[300],
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.account_balance_wallet,
+                            size: 25.0,
+                            color: theme.primaryColor,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 15.0,
+                            ),
+                            child: Text(
+                              'Payment',
+                              style: TextStyle(fontSize: 18.0),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey[300],
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'Location Tracking',
+                            style: TextStyle(fontSize: 18.0),
+                          ),
+                          Switch(
+                            onChanged: (bool value) {
+                              setState(() {
+                                this.switchValue = value;
+                              });
+                            },
+                            value: this.switchValue,
+                            activeColor: theme.primaryColor,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 65.0),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10.0,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey[300],
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.power_settings_new,
+                            size: 25.0,
+                            color: theme.primaryColor,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 15.0,
+                            ),
+                            child: Text(
+                              'Logout',
+                              style: TextStyle(fontSize: 18.0),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ))
